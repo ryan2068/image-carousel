@@ -11,14 +11,14 @@ html, body {
   align-items: center;
   flex-direction: column;
   gap: 2rem;
-  background-color: rgb(235, 216, 252);
+  background-color: rgb(225, 209, 255);
 
 }
 
 .body {
   width: 45vw;
   height: 60vh;
-  background-color: rgb(237, 202, 253);
+  background-color: rgb(166, 171, 245);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,12 +43,12 @@ button {
 }
 
 #dots .dot {
-  width: 10px;
-  height: 10px;
+  width: 50px;
+  height: 50px;
   margin: 10px;
-  background-color: grey;
+  background-color: rgb(172, 172, 172);
   border-radius: 50%;
-  cursor: pointer;
+  
 }
 #dots .active {
   background-color: white;

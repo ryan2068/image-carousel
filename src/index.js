@@ -1,6 +1,9 @@
 const previousBtn = document.querySelector(".previous");
 const nextBtn = document.querySelector(".next");
 const dots = document.querySelector('#dots')
+let intervalID;
+const speed = 3000
+
 let currentImageIndex = 0;
 const imageArray = [
   "/images/Animal-image-0.jpeg",
@@ -25,6 +28,19 @@ const clearImgs = () => {
     images.remove();
   }
 };
+
+const  startInterval = function() {
+  if (intervalID) clearInterval(intervalID)
+  intervalID = setInterval(() => {
+    currentImageIndex++
+    if (currentImageIndex === imageArray.length) currentImageIndex = 0;
+    clearImgs()
+    appendImage(imageArray[currentImageIndex]);
+    const allDots = document.querySelectorAll('.dot')
+    allDots.forEach(item => item.classList.remove('active'))
+    allDots[currentImageIndex].classList.add('active')
+  }, speed)
+}
 
 
 nextBtn.addEventListener("click", () => {
@@ -63,7 +79,17 @@ imageArray.forEach((image, index) => {
  
   span.addEventListener('click', () => {
     currentImageIndex = index
+    clearImgs()
+    appendImage(imageArray[currentImageIndex]);
+    const allDots = document.querySelectorAll('.dot')
+    allDots.forEach(item => item.classList.remove('active'))
+    allDots[currentImageIndex].classList.add('active')
   })
   dots.appendChild(span)
+  const allDots = document.querySelectorAll('.dot')
+  allDots[0].classList.add('active')
+  startInterval()
+
+
 
 })
